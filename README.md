@@ -1,7 +1,7 @@
 
 ## Summary
 
-- Performs download of informed repositories;
+- Performs download of the informed repository;
 - Scans known vulnerabilities in python dependencies using the Safety tool;
 - Perform static analysis on the code using the Bandit tool;
 - Search for keys and secrets within the repository's git structure using the Gitleaks tool.
@@ -54,7 +54,7 @@ $docker rm python-scan
 
 ## Example of use
 ``
-$ docker run -ti --name = "python-scan" 12ca0ef80295 -g = username: password -m = dep-check -r = my-python-repo
+$ docker run -ti --name = "python-scan" 12ca0ef80295 -gu=username  -gp=password -m=dep-check -r=my-python-repo -ro=my-repo-owner
 ``
 
 ## Other infos
