@@ -45,8 +45,7 @@ $docker rm python-scan
 
 | Param | Resume |
 | ------------- | ------------- |
-| `-gu` | Git username, must be sent in the format  **"username"**. This parameter is mandatory for the execution of the script |
-| `-gp` | Git account password, must be sent in the format  **"password"**. This parameter is mandatory for the execution of the script |
+| `-g` | Git credentials, must be sent in the format  **"username:password"**. This parameter is mandatory for the execution of the script |
 | `-m` | Operating mode, send value **"static-scan"** to run only static analysis, **"dep-check"** to check dependencies and **"git-leaks"** to search for keys exposed in the git structure of your repository. If the parameter is not sent, all modes will be executed |
 | `-r` | Evaluate specific repository and do not list default repositories |
 | `-ro` | The  github account of who own the repository |
@@ -54,7 +53,7 @@ $docker rm python-scan
 
 ## Example of use
 ``
-$ docker run -ti --name = "python-scan" 12ca0ef80295 -gu=username  -gp=password -m=dep-check -r=my-python-repo -ro=my-repo-owner
+$ docker run -ti --name = "python-scan" 12ca0ef80295 -g=username:passwd -m=dep-check -r=my-python-repo -ro=my-repo-owner
 ``
 
 ## Other infos

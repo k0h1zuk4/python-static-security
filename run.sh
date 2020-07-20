@@ -11,8 +11,7 @@ REPO_LIST=()
 display_help () 
 {
     echo
-    echo "   -gu          Set git user for repository download. Ex: -gu=username"
-    echo "   -gp          Set git password for repository download. Ex: -gp=passwd "
+    echo "   -g          Set git user for repository download. Ex: -gu=username:passwd"
     echo "   -m           Set run mode. static-scan (Bandit); dep-check (Safety); git-leaks (Gitleaks). Ex: -m=dep-chek "
     echo "   -r           Set a especific repository for testing. Ex: -r=myreponame "
     echo "   -ro          Set a especific github repository owner. Ex: -r=google "
@@ -25,7 +24,7 @@ donwload_repos ()
 {
     echo "Downloading Repos..."
     for repo in ${REPO_LIST[@]}; do
-        git clone https://${GIT_USER}:${GIT_PASSWORD}@github.com/${GIT_USER}/${repo}.git
+        git clone https://${GIT_USER}@github.com/${REPO_OWNER}/${repo}.git
     done
     echo "Download Repos... done"
 }
@@ -89,12 +88,8 @@ case $i in
     display_help
     shift # past argument=value
     ;;
-    -gu=*)
+    -g=*)
     GIT_USER="${i#*=}"
-    shift # past argument=value
-    ;;
-    -gp=*)
-    GIT_PASSWORD="${i#*=}"
     shift # past argument=value
     ;;
     -m=*)
@@ -102,7 +97,7 @@ case $i in
     shift # past argument=value
     ;;
     -ro=*)
-    REPO_LIST=("${i#*=}")
+    REPO_OWNER="${i#*=}"
     shift # past argument=value
     ;;
     -r=*)
